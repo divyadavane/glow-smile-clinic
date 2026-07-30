@@ -61,7 +61,7 @@ export default function AppointmentForm() {
           Request received
         </h3>
         <p className="text-ink/65 text-sm">
-          We'll call you shortly to confirm your slot. For faster booking,
+          We&apos;ll call you shortly to confirm your slot. For faster booking,
           feel free to call us directly too.
         </p>
         <button
@@ -159,7 +159,7 @@ export default function AppointmentForm() {
         {status === "loading" ? "Sending…" : "Request appointment"}
       </button>
       <p className="text-xs text-ink/45 text-center">
-        We'll call to confirm — this form doesn't book instantly.
+        We&apos;ll call to confirm — this form doesn&apos;t book instantly.
       </p>
     </form>
   );

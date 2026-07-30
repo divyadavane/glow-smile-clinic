@@ -23,7 +23,7 @@ export default function Services() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -43,7 +43,7 @@ export default function Services() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -67,8 +67,8 @@ export default function Services() {
             Three practices, one unhurried approach.
           </h2>
           <p className="mt-5 text-ink/65 text-lg leading-relaxed">
-            Every visit starts with listening. Whether it's a chipped tooth,
-            thinning hair, or a skin concern you've been putting off, Dr.
+            Every visit starts with listening. Whether it&apos;s a chipped tooth,
+            thinning hair, or a skin concern you&apos;ve been putting off, Dr.
             Aditya walks you through the reasoning before recommending a
             plan.
           </p>

@@ -24,7 +24,7 @@ export default function Hero() {
       y: 0,
       transition: {
         duration: shouldReduceMotion ? 0.05 : 0.8,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -127,7 +127,7 @@ export default function Hero() {
           className="order-1 lg:order-2 relative"
           initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <div className="relative h-[360px] sm:h-[460px] lg:h-[560px] rounded-[32px] overflow-hidden">
             <img
@@ -142,7 +142,7 @@ export default function Hero() {
               className="absolute bottom-6 left-6 right-6 rounded-2xl bg-porcelain/10 backdrop-blur-md border border-porcelain/20 px-5 py-4 flex items-center gap-4"
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
             >
               <span className="w-10 h-10 rounded-full bg-glow flex items-center justify-center shrink-0">
                 {/* Tooth icon */}

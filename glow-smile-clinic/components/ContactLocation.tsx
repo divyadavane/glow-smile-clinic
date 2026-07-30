@@ -12,7 +12,7 @@ export default function ContactLocation() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -21,7 +21,7 @@ export default function ContactLocation() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -40,7 +40,7 @@ export default function ContactLocation() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -49,7 +49,7 @@ export default function ContactLocation() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -200,7 +200,7 @@ export default function ContactLocation() {
                 Request an appointment
               </h3>
               <p className="text-ink/55 text-sm mb-7">
-                Share your details and we'll confirm a time that works.
+                Share your details and we&apos;ll confirm a time that works.
               </p>
               <AppointmentForm />
             </div>

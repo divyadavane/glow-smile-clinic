@@ -28,7 +28,7 @@ export default function AboutDoctor() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -37,7 +37,7 @@ export default function AboutDoctor() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -55,7 +55,7 @@ export default function AboutDoctor() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -106,7 +106,7 @@ export default function AboutDoctor() {
               Dr. Aditya founded Glow &amp; Smile Clinic to bring hospital-level
               dental, hair, and skin care to Dahanu without the cold,
               transactional feel that keeps people from seeking treatment
-              early. He's known locally for a quiet, humble manner — the kind
+              early. He&apos;s known locally for a quiet, humble manner — the kind
               of doctor who sits down, listens fully, and only then reaches
               for a plan.
             </p>

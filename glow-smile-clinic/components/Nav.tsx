@@ -28,17 +28,17 @@ export default function Nav() {
     hidden: {
       opacity: 0,
       height: 0,
-      transition: { duration: shouldReduceMotion ? 0.01 : 0.3, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: shouldReduceMotion ? 0.01 : 0.3, ease: [0.16, 1, 0.3, 1] as const },
     },
     visible: {
       opacity: 1,
       height: "auto",
-      transition: { duration: shouldReduceMotion ? 0.01 : 0.4, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: shouldReduceMotion ? 0.01 : 0.4, ease: [0.16, 1, 0.3, 1] as const },
     },
     exit: {
       opacity: 0,
       height: 0,
-      transition: { duration: shouldReduceMotion ? 0.01 : 0.25, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: shouldReduceMotion ? 0.01 : 0.25, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -56,7 +56,7 @@ export default function Nav() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
