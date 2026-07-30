@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-glow: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #FAF7F1;
+  color: #0B2B2C;
+}
+
+::selection {
+  background-color: #D4A054;
+  color: #0B2B2C;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #D4A054;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(11,43,44,0.18), transparent);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #0B2B2C;
+  color: #FAF7F1;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.4s var(--ease-glow), background-color 0.4s var(--ease-glow), box-shadow 0.4s var(--ease-glow);
+  box-shadow: 0 1px 2px rgba(11,43,44,0.1);
+}
+.btn-primary:hover {
+  background-color: #123F41;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px rgba(11,43,44,0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #0B2B2C;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(11,43,44,0.25);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: border-color 0.4s var(--ease-glow), transform 0.4s var(--ease-glow);
+}
+.btn-secondary:hover {
+  border-color: #0B2B2C;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   CLINIC CURSOR
+   Custom tooth-icon dot + spring-lagged glow ring.
+   Both elements use translate3d via Framer Motion style prop,
+   so they are offset -50% -50% from top-left to keep
+   the tooth tip exactly at the actual pointer position.
+   ============================================================ */
+
+/* Hide the cursor on touch devices — the component also checks this
+   but a CSS layer prevents any FOUC on slow JS hydration */
+@media (pointer: coarse) {
+  .clinic-cursor-dot,
+  .clinic-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* Outer glow ring — soft, lagged, warm gold */
+.clinic-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 160, 84, 0.45);
+  background: radial-gradient(circle, rgba(212, 160, 84, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  translate: -50% -50%;
+  transition: width 0.35s var(--ease-glow),
+              height 0.35s var(--ease-glow),
+              border-color 0.35s var(--ease-glow),
+              background 0.35s var(--ease-glow);
+  will-change: transform;
+}
+
+.clinic-cursor-ring.cursor-active {
+  width: 64px;
+  height: 64px;
+  border-color: rgba(212, 160, 84, 0.8);
+  background: radial-gradient(circle, rgba(212, 160, 84, 0.15) 0%, transparent 70%);
+}
+
+/* Inner dot — sharp tooth icon */
+.clinic-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 10000;
+  translate: -50% -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition: width 0.3s var(--ease-glow),
+              height 0.3s var(--ease-glow),
+              color 0.3s var(--ease-glow);
+  color: #D4A054; /* glow gold by default */
+  filter: drop-shadow(0 0 4px rgba(212, 160, 84, 0.55));
+}
+
+.clinic-cursor-dot.cursor-active {
+  color: #0B2B2C; /* ink — on interactive elements the tooth becomes dark */
+  filter: drop-shadow(0 0 6px rgba(212, 160, 84, 0.9));
+  width: 20px;
+  height: 20px;
+}
+
+/* Small label that pops up on interactive hover */
+.cursor-label {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  translate: -50% 0;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D4A054;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.clinic-cursor-dot.cursor-active .cursor-label {
+  opacity: 1;
+}
+
